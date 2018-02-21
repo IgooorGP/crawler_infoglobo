@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 import jsonpickle
 import json
+import re
 from html.parser import HTMLParser
 
 # jsonpickle config
@@ -40,7 +41,7 @@ class MyHTMLParser(HTMLParser):
          # creation of FeedItem with ItemDescription (list)
          self.item_descriptions = []
       
-         # instance variables store data
+         # instance variables to store data
          self.txt = ''
          self.imgs = []
          self.links = []
@@ -50,12 +51,9 @@ class MyHTMLParser(HTMLParser):
          self.is_reading_saibamais = False
 
     def handle_starttag(self, tag, attrs):
-        #print("Encountered a start tag:", tag)
-        
         if (tag == 'p'):
             self.is_reading_txt = True
             
-        # must return ItemDescription object  
         if (tag == 'img'):
             # gets img src
             for attribute, value in attrs:
@@ -77,7 +75,7 @@ class MyHTMLParser(HTMLParser):
             for attribute, value in attrs:
                 if (attribute == 'href'):
                     self.links.append(value)
-
+                    
     def handle_endtag(self, tag):
         # reading saibamais div is over
         if (self.is_reading_saibamais and tag == 'div'):
@@ -86,29 +84,35 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         # paragraph parsing
         if (self.is_reading_txt):
-            self.txt += data.strip() + ' '
-
+            data = re.sub('[\t\n]', '', data)
+            data = re.sub('\"', '', data)
+            
+            self.txt += data
+            
     def stop_reading_text(self):
         # stops paragraph reading
         self.is_reading_txt = False 
-      
+
+        # trims white spaces
+        self.txt = self.txt.strip()
+        
         # if text is empty ignore it
-        if (self.txt == ''):
+        if (self.txt == ''):            
             pass
         else:
             # creates new description object (text type)
-            item_description = ItemDescription('text', self.txt.strip())
+            item_description = ItemDescription('text', self.txt)
         
             # cleans txt instance variable for next paragraphs
             self.txt = ''
         
-            # appends new description object 
+            # appends new description object
             self.item_descriptions.append(item_description)
 
     def stop_reading_img(self, src):
         # creates new description object (img type)
         item_description = ItemDescription('image', src)
-      
+
         # appends new description object
         self.item_descriptions.append(item_description)
 
@@ -118,10 +122,13 @@ class MyHTMLParser(HTMLParser):
       
         # creates new description object (links type)
         item_description = ItemDescription('links', self.links)
-      
+        
         # cleans links instance variable for next items
         self.links = []
-       
+
+        # cleans self.txt too against final non-breaking spaces <p>&nbsp;</p>
+        self.txt = ''
+        
         # appends new description object 
         self.item_descriptions.append(item_description)
       
@@ -131,7 +138,6 @@ class MyHTMLParser(HTMLParser):
         
         return item_descriptions
   
-
 def main():
     parser = MyHTMLParser()
     r = requests.get('http://revistaautoesporte.globo.com/rss/ultimas/feed.xml')
@@ -158,7 +164,20 @@ def main():
                     html_code = child.text
                     
                     # description contains raw HTML data which needs extra parsing
-                    parser.feed(html_code)  
+                    parser.feed(html_code)
+                    
+                    # test for feeds that do not end with div to stop text reading
+                    # (e.g., feeds that do not end with saibamais div)
+
+                    # trims whitespaces and non-breaking spaces
+                    parser.txt = parser.txt.strip()
+                    
+                    if (parser.txt.strip() != ''):                        
+                        # appends final paragraph of the text reading
+                        parser.item_descriptions.append(parser.txt)
+
+                        # resets variable for next <item> nodes
+                        parser.txt = ''
 
                 if (child.tag == 'link'):
                     item_link = child.text
@@ -177,7 +196,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
 
