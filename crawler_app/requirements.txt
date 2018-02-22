@@ -1,0 +1,6 @@
+jsonpickle
+requests
+gunicorn
+djangorestframework
+Django==2.0.2
+

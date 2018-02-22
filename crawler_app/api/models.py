@@ -2,6 +2,9 @@ from django.db import models
 from html.parser import HTMLParser
 import re
 
+# docker run -it -p 8000:8000 -p 5858:5858 crawler_app_container
+# docker build -t crawler_app_container .
+
 class Feed (object):    
     def __init__(self, feedItemList):
         self.feed = feedItemList # list of FeedItems
@@ -74,19 +77,17 @@ class MyHTMLParser(HTMLParser):
         if (self.is_reading_txt):
             data = re.sub('[\t\n]', '', data)
             data = re.sub('\"', '', data)
-
-            if (self.txt == ''):
-                self.txt += data
-            elif (self.txt[-1] == '.'):
-                self.txt += data
+            
+            if (data == ''):
+                pass
             else:
-                self.txt += (' ' + data)
+                self.txt += (' ' + data.strip())
                 
     def stop_reading_text(self):
         # stops paragraph reading
         self.is_reading_txt = False 
 
-        # trims white spaces
+        # trims any remaining whitespaces
         self.txt = self.txt.strip()
         
         # if text is empty ignore it
@@ -130,3 +131,5 @@ class MyHTMLParser(HTMLParser):
         self.item_descriptions = []
         
         return item_descriptions
+
+
