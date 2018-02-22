@@ -9,6 +9,6 @@ from .views import crawler_service
 from .views import root
 
 urlpatterns = {    
-    url(r'crawler', crawler_service), # /crawler route returns the formatted JSON
+    url(r'crawler', crawler_service), # refactored route (testable)
     url(r'^$', root) # root route just says hello world
 }
