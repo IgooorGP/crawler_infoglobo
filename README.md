@@ -2,6 +2,8 @@
 
 * Implemented with python 3.6.1;
 * Backend service developed with Django framework;
+* Usage of gunicorn server; 
+* Dockerized project in a container.
 
 This project consumes an XML file from AutoEsporte's magazine feed which can be acessed at
 http://revistaautoesporte.globo.com/rss/ultimas/feed.xml
