@@ -15,9 +15,9 @@ jsonpickle.set_preferred_backend('json')
 jsonpickle.set_encoder_options('json', ensure_ascii=False);
 
 def root(request):
-    '''Root route'''
-    # data = json.dumps(struct[0])
-    # return HttpResponse(data, mimetype='application/json')
+    """
+    Root route
+    """
     return HttpResponse("Hello World!")
 
 def crawler_service(request):
