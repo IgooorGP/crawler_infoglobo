@@ -1,6 +1,8 @@
-"""crawler_app URL Configuration
+"""
 
-The `urlpatterns` list routes URLs to views.
+crawler_app URL Configuration.
+
+The urlpatterns list routes URLs to views.
 
 """
 from django.contrib import admin
