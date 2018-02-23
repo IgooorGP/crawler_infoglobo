@@ -1,0 +1,84 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+   <channel>
+      <title><![CDATA[Auto Esporte]]></title>
+      <link>https://revistaautoesporte.globo.com/</link>
+      <language>pt-BR</language>
+      <copyright>© Todos os direitos reservados.</copyright>
+      <url>https://e.glbimg.com/og/ed/edg2/static_files/rss/img/auto-esporte.png</url>
+      <item>
+        <title><![CDATA[Dummy Title 1]]></title>
+        <description><![CDATA[<div class="foto componente_materia midia-largura-620">
+        <img src="https://imgsrc1.com"/></div>
+        <p>
+           bla1 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+        <p>
+          bla2 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+
+        <div class="saibamais componente_materia expandido">
+          <strong>saiba mais</strong>
+            <ul>
+            <li>
+                <a href="http://saibamais1.com">saibamais saibamais</a></li>
+            <li>
+                <a href="http://saibamais2.com">saibamais saibamais</a></li>
+            </ul>
+        </div>
+        <p>
+            &nbsp;</p>]]>
+        </description>
+        <link>https://dummyitemlink1.html</link>
+        <dc:creator>Da redação de Auto Esporte</dc:creator>
+        <guid>2158063</guid>
+      </item>
+      <item>
+        <title><![CDATA[Dummy Title 2]]></title>
+        <description><![CDATA[<div class="foto componente_materia midia-largura-620">
+        <img src="https://imgsrc2.com"/></div>
+        <p>
+           bla3 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+        <p>
+          bla4 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+
+        <div class="saibamais componente_materia expandido">
+          <strong>saiba mais</strong>
+            <ul>
+            <li>
+                <a href="http://saibamais3.com">saibamais saibamais</a></li>
+            <li>
+                <a href="http://saibamais4.com">saibamais saibamais</a></li>
+            </ul>
+        </div>
+        <p>
+            &nbsp;</p>]]>
+        </description>
+        <link>https://dummyitemlink2.html</link>
+        <dc:creator>Da redação de Auto Esporte</dc:creator>
+        <guid>2158064</guid>
+      </item>
+      <item>
+        <title><![CDATA[Dummy Title 3]]></title>
+        <description><![CDATA[<div class="foto componente_materia midia-largura-620">
+        <img src="https://imgsrc3.com"/></div>
+        <p>
+           bla4 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+        <p>
+          bla5 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+
+        <div class="saibamais componente_materia expandido">
+          <strong>saiba mais</strong>
+            <ul>
+            <li>
+                <a href="http://saibamais4.com">saibamais saibamais</a></li>
+            <li>
+                <a href="http://saibamais5.com">saibamais saibamais</a></li>
+            </ul>
+        </div>
+        <p>
+            &nbsp;</p>]]>
+        </description>
+        <link>https://dummyitemlink3.html</link>
+        <dc:creator>Da redação de Auto Esporte</dc:creator>
+        <guid>2158064</guid>
+      </item>
+   </channel>
+</rss>
