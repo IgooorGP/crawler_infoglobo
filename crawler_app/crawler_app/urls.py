@@ -10,6 +10,6 @@ from django.urls import path
 from django.conf.urls import url, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^', include('api.urls')) # main app includes apis extra URLs
+    url(r'^api/', include('api.urls')), # adds url prefix for the crawler service
+    path('admin/', admin.site.urls)
 ]

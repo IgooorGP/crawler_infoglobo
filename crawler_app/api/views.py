@@ -3,21 +3,36 @@ This file contains all view functions that are used to handle
 the HTTP requests to their mapped URLs.
 
 """
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.decorators import permission_classes
+from rest_framework.decorators import api_view
+from rest_framework.decorators import renderer_classes
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
+from django.http import HttpResponse
+from rest_framework import status
 from .helper_functions.crawler_functions import *
 
-def root(request):
+@api_view(['GET'])
+@renderer_classes((JSONRenderer,))
+@permission_classes((AllowAny,))
+def root_view(request):
     """
-    Root route. Returns dummy string text.
-    
-    """
-    return HttpResponse("Hello World!")
+    Root of the api. Sends a welcome JSON to the user. Only for HTTP GET and requires
+    no authentication token in the HTTP headers.
 
+    """
+    return Response({'Hello user' : 'Welcome to the crawler service! Please login with'},
+                    status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@renderer_classes((JSONRenderer,))
+@permission_classes((IsAuthenticated, )) # requires authentication token
 def crawler_service(request):
     """
     Crawler service to parse the XML with the latest news of AutoEsporte's magazine and
-    return a JSON with all the items from the feed.
-
-    @return JSON containing all news of the feed.
+    return a JSON with all the items from the feed. Only for HTTP GET and REQUIRES
+    an authentication token in the HTTP header.
 
     """
     url          = 'http://revistaautoesporte.globo.com/rss/ultimas/feed.xml'  # url of the feed source
@@ -36,11 +51,13 @@ def crawler_service(request):
     # for each <item> node, extract each <description> = HTML strings
     html_data = get_nodes_data(item_nodes, 'description')
 
-    # requires extra-parsing
+    # HTML strings requires extra-parsing to create
+    # ItemDescription objects with all content of the <item><description> node
     description_data = parse_html_content(html_data)
 
-    # get feed wth all data of the latest posts
+    # builds a feed with the parsed <title>, <link> and <description> data
     feed = get_feed(title_data, link_data, description_data)
     
-    # returns JSON 
-    return HttpResponse(jsonpickle.encode(feed, unpicklable=False), 'application/json')
+    # returns the JSON 
+    return HttpResponse(jsonpickle.encode(feed, unpicklable=False),
+                        'application/json', status=status.HTTP_200_OK)

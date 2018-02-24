@@ -40,6 +40,14 @@ def get_xml_tree(xml_str, node_name=None):
 
     
 def find_nodes(root, tag):
+    """
+    Takes a root reference to an xml tree and a tag name to search
+    build a list with all chidren of that root that have the given tag.
+
+    As an example, if the root is the <channel> node and tag = item, it will return
+    a list of references to all <item> tags of that <channel> node.
+
+    """     
     children_nodes = []
     
     # searches for children with the given tag name
@@ -49,6 +57,15 @@ def find_nodes(root, tag):
     return children_nodes
 
 def get_nodes_data(nodes, tag):
+    """
+    Takes a list of references to xml nodes and a tag to build a list with the content
+    of each tag that is under the node reference.
+
+    As an example, if nodes = a list of <item> nodes and tag = 'title', the function
+    will build a list with all <title> tags for every <item> node.
+
+    """
+    
     data = []
     
     # process each <item>
@@ -59,27 +76,38 @@ def get_nodes_data(nodes, tag):
 
 def parse_html_content(html_lst):
     """
-    Returns description list.
+    Takes a list of raw HTML strings (each <description> tag under each <item> node)
+    and parses it by creating a list that holds lists of object of type  ItemDescription 
+    that have a type and content as attributes.
+
+    As an example, if html_list has HTML text for every <item> node, the function will
+    create a list for each <item> node holding all the descriptions objects for that <item>.
+
+    
 
     """
-    parserHTML = MyHTMLParser()
-    item_descriptions = []
+    parserHTML = MyHTMLParser() # instantiates the customized parser
+    item_descriptions = []      # list that will hold a list for every <item> node
     
     for html_str in html_lst:
-        # feeds html str content into the customized parser
-        # to extract descriptions
+        # feeds html str content into the customized parser to extract descriptions
         parserHTML.feed(html_str)
 
-        # retrieve description data objects store in the parser
-        # this also resets the parser for next iterations
+        # retrieve description data objects stored in the parser
+        # returns a list of ItemDescription objects
         item_descriptions.append(parserHTML.get_item_descriptions())
-        
+
+    # returns the list of lists
     return item_descriptions
 
 def get_feed(title_data, link_data, description_data):
     """
     Combines <title>, <link>, <description> for each <item> node
     to create a list of feed items.
+
+    title_data       = list of every <item><title> node
+    link_data        = list of every <item><link> node
+    description_data = list of every <item><description> node (list of lists)
 
     """    
     size = len(title_data)

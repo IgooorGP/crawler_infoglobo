@@ -10,9 +10,9 @@
         <description><![CDATA[<div class="foto componente_materia midia-largura-620">
         <img src="https://imgsrc1.com"/></div>
         <p>
-           bla1 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+           bla1 bla bla<strong>blastrong blastrong, </strong>bla bla bla a <a href="https://dummy.com">blaanchor</a> mais blabla</p>
         <p>
-          bla2 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+          bla2 bla bla<strong>blastrong blastrong, </strong>bla bla bla a <a href="https://dummy.com">blaanchor</a> mais blabla</p>
 
         <div class="saibamais componente_materia expandido">
           <strong>saiba mais</strong>
@@ -35,9 +35,9 @@
         <description><![CDATA[<div class="foto componente_materia midia-largura-620">
         <img src="https://imgsrc2.com"/></div>
         <p>
-           bla3 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+           bla3 bla bla<strong>blastrong blastrong, </strong>bla bla bla a <a href="https://dummy.com">blaanchor</a> mais blabla</p>
         <p>
-          bla4 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+          bla4 bla bla<strong>blastrong blastrong, </strong>bla bla bla a <a href="https://dummy.com">blaanchor</a> mais blabla</p>
 
         <div class="saibamais componente_materia expandido">
           <strong>saiba mais</strong>
@@ -60,9 +60,9 @@
         <description><![CDATA[<div class="foto componente_materia midia-largura-620">
         <img src="https://imgsrc3.com"/></div>
         <p>
-           bla4 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+           bla4 bla bla<strong>blastrong blastrong, </strong>bla bla bla a <a href="https://dummy.com">blaanchor</a> mais blabla</p>
         <p>
-          bla5 bla bla <strong>blastrong blastrong</strong>, bla bla bla a <a href="https://dummy.com">blaanchor</a>mais blabla</p>
+          bla5 bla bla<strong>blastrong blastrong, </strong>bla bla bla a <a href="https://dummy.com">blaanchor</a> mais blabla</p>
 
         <div class="saibamais componente_materia expandido">
           <strong>saiba mais</strong>

@@ -3,7 +3,10 @@ This file contains all the class definitions required by the
 crawler web service.
 
 """
-
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 from django.db import models
 from html.parser import HTMLParser
 import re
@@ -71,7 +74,6 @@ class MyHTMLParser(HTMLParser):
             
         # instance variables to store parsing data (no encapsulation)         
         self.txt               = '' # string to concatenate info of the paragraphs <p>
-        # self.imgs              = [] # list to hold <img> src attribute
         self.links             = [] # list to hold saibamais <a> links
         self.item_descriptions = [] # creates a list of ItemDescription objects for each article of the website
         
@@ -162,7 +164,7 @@ class MyHTMLParser(HTMLParser):
                 pass
             else:
                 # appends paragraph content to the instance variable
-                # trims unnecessary left/right whitespace and non-breaking spaces (&nbps;)
+                # trims unnecessary left/right whitespace and non-breaking spaces (&nbps;)    
                 self.txt += (' ' + data.strip())
                 
     def stop_reading_text(self):
@@ -246,4 +248,9 @@ class MyHTMLParser(HTMLParser):
         self.item_descriptions = []
         
         return item_descriptions
-    
+
+    # when a new user is created, a new token is generated
+    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+    def create_auth_token(sender, instance=None, created=False, **kwargs):
+        if created:
+            Token.objects.create(user=instance)
