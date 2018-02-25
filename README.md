@@ -14,6 +14,11 @@ http://revistaautoesporte.globo.com/rss/ultimas/feed.xml
 This crawler service parses all useful information from XML and HTML of the last news of the
 magazine and converts it into an organized an easy-to-understand JSON.
 
+## Installation
+
+* Build the Dockerfile and run it exposing the port 8000 (required by Django). The shell script 
+file **start_server.sh** will be executed to run the server.
+
 ## File Summary
 
 * /api/views.py  **-->** functions to deal with requests to the crawler service; <br/>
