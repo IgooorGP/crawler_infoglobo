@@ -14,6 +14,11 @@ jsonpickle.set_preferred_backend('json')
 jsonpickle.set_encoder_options('json', ensure_ascii=False);
 
 def get_xml_string(xml_url_source):
+    """
+    Sends an HTTP GET to an URL to get an XML string.
+
+    """
+    
     # sends HTTP GET to extract a raw XML string
     r = requests.get(xml_url_source)
 
@@ -31,21 +36,21 @@ def get_xml_tree(xml_str, node_name=None):
     # instance begins at the root of the XML tree
     root = ET.fromstring(xml_str)
 
+    # if a node name_name is given, it is set to be the root of the subtree
     if (node_name is None):
         return root
     else:
         # returns None if the desired node was not found
         # in the xml structure
         return root.find(node_name)
-
     
 def find_nodes(root, tag):
     """
-    Takes a root reference to an xml tree and a tag name to search
-    build a list with all chidren of that root that have the given tag.
+    Takes a root reference to an xml tree and a tag name to build
+    a list with all the chidren nodes of the root that matches the tagname
 
     As an example, if the root is the <channel> node and tag = item, it will return
-    a list of references to all <item> tags of that <channel> node.
+    a list of references of each <item> tag under the <channel> node.
 
     """     
     children_nodes = []
@@ -62,10 +67,9 @@ def get_nodes_data(nodes, tag):
     of each tag that is under the node reference.
 
     As an example, if nodes = a list of <item> nodes and tag = 'title', the function
-    will build a list with all <title> tags for every <item> node.
+    will build a list with all <title> tags for every <item> node in the nodes list.
 
-    """
-    
+    """    
     data = []
     
     # process each <item>
@@ -77,14 +81,11 @@ def get_nodes_data(nodes, tag):
 def parse_html_content(html_lst):
     """
     Takes a list of raw HTML strings (each <description> tag under each <item> node)
-    and parses it by creating a list that holds lists of object of type  ItemDescription 
-    that have a type and content as attributes.
+    and parses it by creating a list that holds lists of ItemDescription objects.
 
-    As an example, if html_list has HTML text for every <item> node, the function will
-    create a list for each <item> node holding all the descriptions objects for that <item>.
-
+    As an example, if html_list has HTML text for every <item><description> node, the function will
+    create a list for each <item> node holding all the descriptions objects.
     
-
     """
     parserHTML = MyHTMLParser() # instantiates the customized parser
     item_descriptions = []      # list that will hold a list for every <item> node
@@ -93,8 +94,8 @@ def parse_html_content(html_lst):
         # feeds html str content into the customized parser to extract descriptions
         parserHTML.feed(html_str)
 
-        # retrieve description data objects stored in the parser
-        # returns a list of ItemDescription objects
+        # retrieves the description data objects stored in the parser
+        # which returns a list of ItemDescription objects
         item_descriptions.append(parserHTML.get_item_descriptions())
 
     # returns the list of lists

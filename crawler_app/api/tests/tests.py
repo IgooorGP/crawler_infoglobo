@@ -15,11 +15,8 @@ class TestCrawlerService(TestCase):
         """
         Reads test XML file which has 3 <item> tags
         """
-        # print(os.path.join(settings.BASE_DIR, '/api/tests/xml_test.txt'))
-        # print(os.path.join(settings.PROJECT_ROOT, 'xml_test.txt'))
-        
         # parsing test xml data with 3 <item>
-        with open(os.path.join(settings.BASE_DIR, '/api/tests/xml_test.txt'), 'r', encoding='utf-8') as myfile:
+        with open(settings.BASE_DIR + '/api/tests/xml_test.txt', 'r', encoding='utf-8') as myfile:
             xml_str = myfile.read().replace('\n', '')
         
         self.channel_root = get_xml_tree(xml_str, node_name='channel') # gets an xml tree which starts at channel node
