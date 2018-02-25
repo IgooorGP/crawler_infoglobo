@@ -21,12 +21,12 @@ file **start_server.sh** will be executed to run the server.
 
 ## File Summary
 
-* /api/views.py  **-->** functions to deal with requests to the crawler service; <br/>
-* /api/urls.py   **-->** endpoints of the service; <br/>
-* /api/models.py **-->** classes used to parse the file and build objects for the JSON output; <br/>
-* /api/helper_functions/crawler_functions.py **-->** functions to manipulate the xml data; <br/>
-* /api/tests/xml_test.txt **-->** simple xml used for testing the xml parser; <br/>
-* /api/tests/tests.py **-->** tests for the crawler views and functions. <br/>
+* ```/api/views.py```  **-->** functions to deal with requests to the crawler service; <br/>
+* ```/api/urls.py```   **-->** endpoints of the service; <br/>
+* ```/api/models.py``` **-->** classes used to parse the file and build objects for the JSON output; <br/>
+* ```/api/helper_functions/crawler_functions.py``` **-->** functions to manipulate the xml data; <br/>
+* ```/api/tests/xml_test.txt **-->** simple xml used for testing the xml parser; <br/>
+* ```/api/tests/tests.py``` **-->** tests for the crawler views and functions. <br/>
 
 ## Api endpoints
 
