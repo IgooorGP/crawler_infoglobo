@@ -56,7 +56,7 @@ GET to /crawler without the auth token will generate a 401 http status message, 
 
 ## Examples
 
-* Response of a GET request to the root route ```/```
+* Response of a GET request to the root route of the api: ```/api/```
 
 ```
 {
@@ -64,12 +64,12 @@ GET to /crawler without the auth token will generate a 401 http status message, 
 }
 ```
 
-* POST JSON body to the authentication route ```/get_auth_token```
+* POST JSON body to the authentication route: ```/api/get_auth_token```
 
 ```
 {
-	"username": "globo",
-	"password": "123"	
+    "username": "globo",
+    "password": "123"	
 }
 ```
 
@@ -88,7 +88,7 @@ After receiving the token, one can access the crawler service by supplying the t
 Authorization: Token a41feb4cf545ce14de7929131683072b938d018e
 ```
 
-* JSON result of an authenticated GET request to ```/crawler```
+* JSON result of an authenticated GET request to the crawler service: ```/api/crawler```
 
 ```
 {
