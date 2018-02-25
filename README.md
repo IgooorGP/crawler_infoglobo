@@ -21,7 +21,7 @@ file **start_server.sh** will be executed to run the server.
 
 ## File Summary
 
-* ```/api/views.py```  **-->** contains the **main function** to handle the requests and parse the XML file; <br/>
+* ```/api/views.py```  **-->** contains the **main crawler function** to handle the requests and parse the XML file; <br/>
 * ```/api/urls.py```   **-->** endpoints of the service; <br/>
 * ```/api/models.py``` **-->** classes used to parse the file and build objects for the JSON output; <br/>
 * ```/api/helper_functions/crawler_functions.py``` **-->** functions to manipulate the xml data; <br/>
@@ -34,26 +34,26 @@ file **start_server.sh** will be executed to run the server.
 ```/api/crawler``` : GET route that parses the XML and returns the final JSON. Requires authentication token; <br/>
 ```/api/get_auth_token``` : POST route that requires a JSON with a username and password to retrieve an auth token. <br/>
 
-To keep things simple and focused on the parser, a user model with CRUD operations has not been implemented. Rather than
-that, a simple user was hardcoded into the SQLite database with its related token.
-
 ## Authentication
 
-In order to use the crawler service, the user must be authenticated. A single user was created for this demo project. Its
-credentials are as follows:
+A single user was created to demonstrate the authentication of the application. However, if one wanted to expand this 
+service, such task would be easy because the addition of new users to the database is already configured to generate 
+a new token for that person.
+
+The credentials of the generated user are as follows and are required for the parsing route: ```/api/crawler```:
 
 ```
 username: globo
 password: 123
 ```
 
-These credentials are required as a JSON body of the POST request to the ```/api/get_auth_token``` route, which returns
-the token of the user. GET requests to the service ```/api/crawler``` will require an HTTP header as follows:
+These credentials are required as a JSON body of a POST request to the ```/api/get_auth_token``` route, which returns
+the token of the user since GET requests to the service ```/api/crawler``` requires an HTTP header as follows:
 
 ```Authentication: Token user_token```
 
-GET to ```/api/crawler``` without the auth token will generate a 401 http status message 
-and a 400 message for wrong username/pass.
+GET to ```/api/crawler``` without the auth token will generate a 401 http status message and a 400 message for wrong 
+username or pass.
 
 ## Examples
 
@@ -61,11 +61,11 @@ and a 400 message for wrong username/pass.
 
 ```
 {
-    "Hello user": "Welcome user! Dont forget to login to use the service."
+    "Crawler service": "Welcome user! Dont forget to login to use the service."
 }
 ```
 
-* POST JSON body to the authentication route: ```/api/get_auth_token```
+* POST JSON body to get an auth token from the authentication route: ```/api/get_auth_token```
 
 ```
 {
@@ -82,14 +82,14 @@ and a 400 message for wrong username/pass.
 }
 ```
 
-After receiving the token, one can access the crawler service by supplying the token in the headers of the HTTP requests.
+After receiving the token, one can access the crawler service by supplying the token in the headers of subsequent HTTP requests.
 
 * HTTP Header example of an authenticated request:
 ```
 Authorization: Token a41feb4cf545ce14de7929131683072b938d018e
 ```
 
-* JSON result of an authenticated GET request to the crawler service: ```/api/crawler```
+* JSON result of an authenticated GET request to the crawler service: ```/api/crawler```:
 
 ```
 {
