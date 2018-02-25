@@ -1,8 +1,10 @@
 # Python's Crawler for AutoEsporte's Magazine News Feed!
 
+## Details
+
 * Implemented with python 3.6.1;
 * Backend service developed with Django framework;
-* SQLite database for demo project;
+* Token-based authentication to use the service;
 * Unit tested with unittest library;
 * Dockerized project in a container.
 
@@ -53,7 +55,7 @@ GET to /crawler without the auth token will generate a 401 http status message, 
 
 ```
 {
-    "Hello user": "Welcome to the crawler service! Please login with"
+    "Hello user": "Welcome user! Dont forget to login to use the service."
 }
 ```
 
