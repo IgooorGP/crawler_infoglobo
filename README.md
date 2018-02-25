@@ -30,9 +30,9 @@ file **start_server.sh** will be executed to run the server.
 
 ## Api endpoints
 
-```/``` : GET root route of the service, sends a welcome JSON to the user; <br/>
-```/crawler``` : GET route that parses the XML and returns the final JSON. Requires authentication token; <br/>
-```/get_auth_token``` : POST route that requires a JSON with a username and password to retrieve an auth token. <br/>
+```/api/``` : GET root route of the service, sends a welcome JSON to the user; <br/>
+```/api/crawler``` : GET route that parses the XML and returns the final JSON. Requires authentication token; <br/>
+```/api/get_auth_token``` : POST route that requires a JSON with a username and password to retrieve an auth token. <br/>
 
 To keep things simple and focused on the parser, a user model with CRUD operations has not been implemented. Rather than
 that, a simple user was hardcoded into the SQLite database with its related token.
@@ -47,12 +47,13 @@ username: globo
 password: 123
 ```
 
-These credentials are required as a JSON body of the POST request to the ```/get_auth_token``` route, which returns
-the token of the user. GET request to /crawler will require an HTTP header as follows:
+These credentials are required as a JSON body of the POST request to the ```/api/get_auth_token``` route, which returns
+the token of the user. GET requests to the service ```/api/crawler``` will require an HTTP header as follows:
 
 ```Authentication: Token user_token```
 
-GET to /crawler without the auth token will generate a 401 http status message, and 400 message for wrong username/pass.
+GET to ```/api/crawler``` without the auth token will generate a 401 http status message 
+and a 400 message for wrong username/pass.
 
 ## Examples
 
@@ -81,9 +82,9 @@ GET to /crawler without the auth token will generate a 401 http status message, 
 }
 ```
 
-After receiving the token, one can access the crawler service by supplying the token in the headers of HTTP requests.
+After receiving the token, one can access the crawler service by supplying the token in the headers of the HTTP requests.
 
-* Header of an authenticated request
+* HTTP Header example of an authenticated request:
 ```
 Authorization: Token a41feb4cf545ce14de7929131683072b938d018e
 ```
