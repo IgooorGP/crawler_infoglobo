@@ -8,16 +8,14 @@
 * Unit tested with unittest library;
 * Dockerized project in a container.
 
-This project consumes an XML file from AutoEsporte's magazine feed which can be acessed at
-http://revistaautoesporte.globo.com/rss/ultimas/feed.xml
-
-This crawler service parses all useful information from XML and HTML of the last news of the
-magazine and converts it into an organized an easy-to-understand JSON.
+This project consumes an XML file from AutoEsporte's magazine feed, which can be acessed at
+http://revistaautoesporte.globo.com/rss/ultimas/feed.xml, in order to parse the content of 
+the latest news of the magazine and convert it into a well-organized and easy-to-understand JSON.
 
 ## Installation
 
-* Build the Dockerfile and run it exposing the port 8000 (required by Django). The shell script 
-file **start_server.sh** will be executed to run the server.
+* Build the Dockerfile and run it with the port 8000 being exposed (required by Django). The shell script 
+file **start_server.sh** will be executed and start the server.
 
 ## File Summary
 
