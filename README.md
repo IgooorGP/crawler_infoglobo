@@ -21,7 +21,7 @@ file **start_server.sh** will be executed to run the server.
 
 ## File Summary
 
-* ```/api/views.py```  **-->** functions to deal with requests to the crawler service; <br/>
+* ```/api/views.py```  **-->** contains the **main function** to handle the requests and parse the XML file; <br/>
 * ```/api/urls.py```   **-->** endpoints of the service; <br/>
 * ```/api/models.py``` **-->** classes used to parse the file and build objects for the JSON output; <br/>
 * ```/api/helper_functions/crawler_functions.py``` **-->** functions to manipulate the xml data; <br/>
