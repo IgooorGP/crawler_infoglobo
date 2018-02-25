@@ -22,7 +22,7 @@ def root_view(request):
     no authentication token in the HTTP headers.
 
     """
-    return Response({'Hello user' : 'Welcome to the crawler service! Please login with'},
+    return Response({'Crawler service' : 'Welcome user! Dont forget to login to use the service.'},
                     status=status.HTTP_200_OK)
 
 @api_view(['GET'])
