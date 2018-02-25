@@ -14,8 +14,9 @@ the latest news of the magazine and convert it into a well-organized and easy-to
 
 ## Installation
 
-* Build the Dockerfile and run it with the port 8000 being exposed (required by Django). The shell script 
-file **start_server.sh** will be executed and start the server.
+* Clone this repo and build the Dockerfile to transfer all the repo code to the container. Then, run the container
+with the port 8000 being exposed (required by Django) and the shell script file **start_server.sh** will be executed 
+and start the server.
 
 ## File Summary
 
