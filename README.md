@@ -1,11 +1,11 @@
-# Python's Crawler for AutoEsporte's Magazine News Feed!
+# Crawler for AutoEsporte's Magazine News Feed!
 
 ## Details
 
-* Implemented with python 3.6.1;
+* Implemented with Python 3.6.1;
 * Backend service developed with Django framework;
 * Token-based authentication to use the service;
-* Unit tested with unittest library;
+* Integration tests written with the unittest library;
 * Dockerized project in a container.
 
 This project consumes an XML file from AutoEsporte's magazine feed, which can be acessed at
